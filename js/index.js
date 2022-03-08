@@ -1,3 +1,8 @@
+// Enum Constants
+
+const MP3 = 0;
+const MP4 = 1;
+
 // Load links from document.
 
 var test1 = document.getElementById("a-test1");
