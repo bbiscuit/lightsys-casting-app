@@ -1,8 +1,25 @@
+const phpGetURL = '../php/getFiles.php';
+const response = fetch(phpGetURL, {
+	method: 'GET',
+	mode: 'same-origin',
+	credentials: 'same-origin',
+	headers: {
+		'Content-Type': 'application/json'
+	},
+});
 
-// Enum Constants
+// Load JSON database.
 
-const MP3 = 0;
-const MP4 = 1;
+var jresult;
+
+response.then(response => response.blob())
+	.then(myBlob => myBlob.stream().getReader().read())
+	.then(please => { 
+		var json = String.fromCharCode(...please.value);
+		jresult = JSON.parse(json);
+
+		console.log(jresult);
+	});
 
 // Load links from document.
 
