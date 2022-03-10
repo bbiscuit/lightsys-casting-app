@@ -5,6 +5,9 @@
 </head>
 
 <body>
+     <!--Load the API.-->
+     <!--<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>-->
+
     <h1>Lightsys Casting App Test Interface.</h1>
     <ul>
         <li id="a-test1"><a>Test 1.</a></li>
@@ -26,9 +29,14 @@
 		    <li><a id="a-seek">Seek</a></li>
 		    <li><p id="p-seek">Time: ?:??</p></li>
 		    <li><p id="p-duration">Duration: ?:??</p></li>
+		    <li><google-cast-launcher style="display: block; width: 100px; height: auto;"></google-cast-launcher></li>
 	    </ul>
     
     </div>
 
+    <!--Run the initialize api.-->
+    <script type="text/javascript" src="js/initCastPlayer.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+	
+    <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 </body>

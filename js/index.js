@@ -1,3 +1,5 @@
+console.log("initCastPlayer script.");
+
 const phpGetURL = '../php/getFiles.php';
 const response = fetch(phpGetURL, {
 	method: 'GET',
@@ -22,7 +24,6 @@ response.then(response => response.blob())
 	});
 
 // Load links from document.
-
 var test1 = document.getElementById("a-test1");
 
 // Set button press event listeners.
@@ -78,3 +79,11 @@ inputVolume.addEventListener("change", function() {
 seekLink.addEventListener("click", function() {
 	console.log("seek initiated");
 });
+
+// Setup casting functions.
+
+var setupRemotePlayer = function() {
+
+
+
+};
