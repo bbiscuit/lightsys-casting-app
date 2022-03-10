@@ -2,3 +2,15 @@ a:hover {
 	color: blue;
 	cursor: pointer;
 }
+
+div#taskbar > ul {
+	list-style: none;
+}
+
+div#taskbar > ul > li {
+	display: inline;
+}
+
+div#taskbar > ul > li > p {
+	display: inline;
+}
