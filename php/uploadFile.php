@@ -1,12 +1,14 @@
 <?php
 
 // 1. Upload the file to the web server.
+// 	a. Fetch necessary data from the file.
+// 	b. Upload it.
 // 2. Register the file to the databse.
-//	a. Fetch necessary data from the file.
-//	b. Run the upload query.
 
 
 // 1. Upload the file to the web server.
+
+// a. Fetch necessary data from the file.
 $filename = $_FILES['file']['name'];
 $location = "../MediaItems/" . $filename;
 
@@ -30,6 +32,7 @@ else {
 	exit();
 }
 
+// b. Upload it.
 if (move_uploaded_file($_FILES['file']['tmp_name'], $location)) {
 	echo 'Success';
 }
@@ -45,14 +48,10 @@ class FileDB extends SQLite3 {
 }
 $db = new FileDB();
 
-// a. Fetch necessary data from the file.
-
-// b. Run the upload query.
 $cmd = "insert into Files (HTTP, TYPE, NAME) values ('" . $http . "', " . $type . ", '" . $name . "');";
 
 
 $db->exec($cmd);
-
 $db->close();
 
 ?>
