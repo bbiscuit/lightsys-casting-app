@@ -1,4 +1,12 @@
-
+/**
+ * Helper function to convert minute-seconds
+ * time data to seconds.
+ *
+ * @param min The minutes time component.
+ * @param sec The seconds time component.
+ *
+ * @return The time, in seconds.
+ */
 mSToS = function(min, sec) {
 	return sec + min * 60;
 };
@@ -6,9 +14,17 @@ mSToS = function(min, sec) {
 
 const TIME_DELAY = 500;
 
+/**
+ * Data structure to control remote media player
+ * interface.
+ */
 class Controls {
 	constructor() {
-		// Snag HTML elements.
+		// 1. Snag HTML control elements from document.
+		// 2. Setup an interface update function to be called
+		// repeatedly after TIME_DELAY ms.
+
+		// 1. Snag HTML control elements from document.
 		this.playPause = document.getElementById("a-play-pause");
 		this.muteUnmute = document.getElementById("a-mute-unmute");
 		this.volumeInput = document.getElementById("input-volume");
@@ -18,15 +34,13 @@ class Controls {
 		this.seek = document.getElementById("a-seek");
 		this.seekDisplay = document.getElementById("p-seek");
 		this.durationDisplay = document.getElementById("p-duration");
-
-		// Fields.
-		this.duration = -1;
-		this.seekMinutes = 0;
-		this.seekSeconds = 0;
-
+	
 		this.seekMinutesInput.value = 0;
 		this.seekSecondsInput.value = 0;
 
+
+		// 2. Setup an interface update function to be called
+		// repeatedly after TIME_DELAY ms.
 		var self = this;
 
 		this.updateInterval = setInterval(function() {	
@@ -53,14 +67,6 @@ class Controls {
 
 			self.durationDisplay.innerText = "Duration: " + controller.getFormattedTime(player.duration);
 		}, TIME_DELAY);
-
-		// Initialize remote player.
-		//this.controller = new cast.framework.RemotePlayerController(new cast.framework.RemotePlayer());
-
-		// Setup initial display values.
-		this.volumeDisplay.innerText = "Volume: ???%";
-		this.seekDisplay.innerText = "Time: " + this.seekMinutes + ":" + (this.seekSeconds / 10) + (this.seekSeconds % 10);
-
 	}
 
 	/**
@@ -69,12 +75,14 @@ class Controls {
 	bindCallbacks() {
 		var self = this;
 
+		// Event listener for toggling play/pause on the video.
 		this.playPause.addEventListener("click", function() {
 			var player = new cast.framework.RemotePlayer();
 			var controller = new cast.framework.RemotePlayerController(player);
 			controller.playOrPause();
 		});
 
+		// Event listener for toggling mute/unmute on the video.
 		this.muteUnmute.addEventListener("click", function() {
 			var player = new cast.frameworkRemotePlayer();
 			var controller = new cast.framework.RemotePlayerController(player);
@@ -83,6 +91,7 @@ class Controls {
 
 		});
 
+		// Event listener for inputing a volume change on the video.
 		this.volumeInput.addEventListener("change", function() {
 			var player = new cast.framework.RemotePlayer();
 			var controller = new cast.framework.RemotePlayerController(player);
@@ -95,6 +104,7 @@ class Controls {
 			}
 		});
 
+		// Event listener for seeking through the video.
 		this.seek.addEventListener("click", function() {
 		
 			var player = new cast.framework.RemotePlayer();
@@ -114,6 +124,7 @@ class Controls {
 
 }
 
+// Function to start the controls, to be called **AFTER!** the API is loaded completely.
 startControls = function() {
 	var c = new Controls();
 	c.bindCallbacks();
