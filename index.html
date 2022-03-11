@@ -5,14 +5,11 @@
 </head>
 
 <body>
-     <!--Load the API.-->
-     <!--<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>-->
-
     <h1>Lightsys Casting App Test Interface.</h1>
+	<!--Will be used in pushing videos that can be loaded.-->
     <ul id="load-links"></ul>
-
-    <div id="taskbar">
-    
+	<!--Loading of the playback toolbar.-->
+    <div id="taskbar">    
 	    <ul id="ul-taskbar">
 		    <li><a id="a-play-pause">Pause</a></li>
 		    <li><a id="a-mute-unmute">Mute</a></li>
@@ -29,13 +26,12 @@
     </div>
 
     <input id="file-input" type="file">Upload a file.</input>
-
+    <!--The uploadFile.js calls the uploadFile.php-->
     <script type="text/javascript" src="js/uploadFile.js"></script>
-
-    <!--Run the initialize api.-->
+    <!--Run the initialize related javascript files.-->
     <script type="text/javascript" src="js/initCastPlayer.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-	
+	<!--Load the API.-->
     <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
     <script type="text/javascript" src="js/initControls.js"></script>
 </body>
