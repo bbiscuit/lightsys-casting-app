@@ -24,7 +24,7 @@ $i = 0;
 while($row = $res->fetchArray(SQLITE3_ASSOC)){
 	echo "{";
 	echo '"ID":"' . $row["ID"] . '",';
-	echo '"PATH":"' . $row["PATH"] . '",';
+	echo '"HTTP":"' . $row["HTTP"] . '",';
 	echo '"TYPE":"' . $row["TYPE"] . '",';
 	echo '"NAME":"' . $row["NAME"];
 	echo '"}';

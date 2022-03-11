@@ -27,7 +27,7 @@ loadMediaList = function(media) {
 		list.appendChild(listItem);
 
 		link.addEventListener("click", function() {
-			var url = e.PATH;
+			var url = e.HTTP;
 			var castSession = cast.framework.CastContext.getInstance().getCurrentSession();
 			var mediaInfo;
 
